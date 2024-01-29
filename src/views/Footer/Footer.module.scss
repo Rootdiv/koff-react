@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @media (min-width: 580px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (min-width: 820px) {
+    gap: 32px;
+  }
+}
+
+.copyright {
+  @media (min-width: 580px) {
+    grid-column: 1/2;
+  }
+}
