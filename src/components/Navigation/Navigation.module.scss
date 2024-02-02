@@ -1,0 +1,33 @@
+.navigation {
+  display: flex;
+  gap: 16px;
+}
+
+.link {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+  gap: 4px;
+
+  @media (min-width: 580px) {
+    flex-direction: row;
+  }
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    color: #780096;
+
+    .favorite {
+      fill: #780096;
+    }
+  }
+}
+
+.linkText {
+  display: none;
+
+  @media (min-width: 580px) {
+    display: block;
+  }
+}

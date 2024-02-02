@@ -5,8 +5,8 @@ import { Container } from '@/views/Container/Container';
 import style from './Header.module.scss';
 
 export const Header = () => (
-  <header>
-    <Container>
+  <header className={style.header}>
+    <Container className={style.container}>
       <div className={style.logo}>
         <Logo />
       </div>
