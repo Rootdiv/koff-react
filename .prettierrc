@@ -1,5 +1,5 @@
 {
-  "arrowParens": "always",
+  "arrowParens": "avoid",
   "jsxSingleQuote": false,
   "singleQuote": true,
   "trailingComma": "all",

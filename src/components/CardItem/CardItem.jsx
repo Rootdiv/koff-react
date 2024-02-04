@@ -1,17 +1,18 @@
+import { API_URL } from '@/const';
 import style from './CardItem.module.scss';
 
-export const CardItem = () => (
+export const CardItem = ({ name, images: [image], price }) => (
   <article className={style.card}>
     <a className={`${style.link} ${style.linkImg}`} href="#">
-      <img src="/img/photo.jpg" className={style.img} alt="Кресло с подлокотниками" />
+      <img src={`${API_URL}/${image}`} className={style.img} alt={name} />
     </a>
     <div className={style.info}>
       <h3 className={style.title}>
         <a href="#" className={style.link}>
-          Кресло с подлокотниками
+          {name}
         </a>
       </h3>
-      <p className={style.price}>5&nbsp;000&nbsp;&#8381;</p>
+      <p className={style.price}>{price.toLocaleString()}&nbsp;&#8381;</p>
     </div>
     <button className={style.btn} type="button">
       В корзину
