@@ -8,6 +8,7 @@
   flex-direction: row-reverse;
   align-items: flex-end;
   gap: 4px;
+  padding: 1px;
 
   @media (min-width: 580px) {
     flex-direction: row;
