@@ -45,6 +45,16 @@ export const Card = () => {
               </tbody>
             </table>
           </div>
+          <div className={style.btns}>
+            <button className={style.btn} type="button">
+              В корзину
+            </button>
+            <button className={style.favorite} type="button">
+              <svg width="16" height="16" className={style.svg}>
+                <use href="/img/sprite.svg#favorite"></use>
+              </svg>
+            </button>
+          </div>
         </div>
       </Container>
     </section>
