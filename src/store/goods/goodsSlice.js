@@ -11,6 +11,12 @@ export const fetchGoods = createAsyncThunk('goods/fetchGoods', async (_, thunkAP
   });
 
   if (!response.ok) {
+    if (response.status === 401) {
+      return thunkAPI.rejectWithValue({
+        status: response.status,
+        error: 'Не удалось загрузить товары!',
+      });
+    }
     throw new Error('Не удалось загрузить товары!');
   }
 

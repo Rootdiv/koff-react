@@ -11,7 +11,13 @@ export const fetchProduct = createAsyncThunk('product/fetchProduct', async (id, 
   });
 
   if (!response.ok || isNaN(id) || response.status === 404) {
-    throw new Error('Не удалось загрузить товары!');
+    if (response.status === 401) {
+      return thunkAPI.rejectWithValue({
+        status: response.status,
+        error: 'Не удалось загрузить товар!',
+      });
+    }
+    throw new Error('Не удалось загрузить товар!');
   }
 
   return response.json();
