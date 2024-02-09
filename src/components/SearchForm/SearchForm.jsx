@@ -4,12 +4,13 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 export const SearchForm = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const [search, setSearch] = useState(location.search.slice(3));
-  const isSearchPage = location.pathname === '/search';
+  const { search: searchUrl, pathname } = useLocation();
+  const search = searchUrl.replace(/\?q=/, '').replace(/&(.*)/, '');
+  const [searchValue, setSearchValue] = useState(search);
+  const isSearchPage = pathname === '/search';
 
   useEffect(() => {
-    !isSearchPage && setSearch('');
+    !isSearchPage && setSearchValue('');
   }, [isSearchPage]);
 
   const handleSubmit = event => {
@@ -21,7 +22,7 @@ export const SearchForm = () => {
   };
 
   const handlerSearch = event => {
-    setSearch(event.target.value);
+    setSearchValue(event.target.value);
   };
 
   return (
@@ -32,7 +33,7 @@ export const SearchForm = () => {
         placeholder="Введите запрос"
         className={style.input}
         onChange={handlerSearch}
-        value={decodeURIComponent(search)}
+        value={decodeURIComponent(searchValue)}
       />
       <button type="submit" className={style.button}>
         <svg width="16" height="16">
