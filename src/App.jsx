@@ -33,7 +33,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: '/favorite',
+        path: '/favorites',
         element: (
           <>
             <Catalog />

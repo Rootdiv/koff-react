@@ -86,17 +86,16 @@
   }
 }
 
-.favorite {
+.favorites {
   width: 16px;
   height: 16px;
 
   &:hover,
   &:focus-visible,
-  &:active,
-  &_active {
+  &:active {
     color: #780096;
 
-    .svg {
+    svg {
       fill: #780096;
     }
   }

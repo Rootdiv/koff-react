@@ -7,13 +7,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchProduct } from '@/store/product/productSlice';
 
 import { Slider } from '@/components/Slider/Slider';
+import { FavoritesButton } from '@/components/FavoritesButton/FavoritesButton';
 
 export const Card = () => {
   const { productId } = useParams();
   const dispatch = useDispatch();
   const {
     loading,
-    data: { name: title, images, price, article, characteristics },
+    data: { id, name: title, images, price, article, characteristics },
     error,
   } = useSelector(state => state.product);
 
@@ -49,11 +50,7 @@ export const Card = () => {
             <button className={style.btn} type="button">
               В корзину
             </button>
-            <button className={style.favorite} type="button">
-              <svg width="16" height="16" className={style.svg}>
-                <use href="/img/sprite.svg#favorite"></use>
-              </svg>
-            </button>
+            <FavoritesButton className={style.favorites} id={id} />
           </div>
         </div>
       </Container>

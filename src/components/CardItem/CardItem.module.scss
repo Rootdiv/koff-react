@@ -80,18 +80,17 @@
   }
 }
 
-.favorite {
+.favorites {
   position: absolute;
   top: 12px;
   right: 12px;
 
   &:hover,
   &:focus-visible,
-  &:active,
-  &_active {
+  &:active {
     color: #780096;
 
-    .cardSvg {
+    svg {
       fill: #780096;
     }
   }

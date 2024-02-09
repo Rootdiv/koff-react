@@ -1,6 +1,7 @@
 import { API_URL } from '@/const';
 import style from './CardItem.module.scss';
 import { Link } from 'react-router-dom';
+import { FavoritesButton } from '@/components/FavoritesButton/FavoritesButton';
 
 export const CardItem = ({ id, name, images: [image], price }) => (
   <article className={style.card}>
@@ -18,10 +19,6 @@ export const CardItem = ({ id, name, images: [image], price }) => (
     <button className={style.btn} type="button">
       В корзину
     </button>
-    <button className={style.favorite} type="button">
-      <svg width="16" height="16" className={style.svg}>
-        <use href="/img/sprite.svg#favorite"></use>
-      </svg>
-    </button>
+    <FavoritesButton className={style.favorites} id={id} />
   </article>
 );

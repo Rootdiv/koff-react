@@ -3,10 +3,10 @@ import style from './Navigation.module.scss';
 
 export const Navigation = () => (
   <nav className={style.navigation}>
-    <Link className={style.link} to="/favorite">
+    <Link className={style.link} to="/favorites">
       <span className={style.linkText}>Избранное</span>
       <svg width="16" height="16" className={style.favorite}>
-        <use href="/img/sprite.svg#favorite"></use>
+        <use href="/img/sprite.svg#favorites"></use>
       </svg>
     </Link>
     <Link className={style.link} to="/cart">
