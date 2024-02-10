@@ -6,7 +6,7 @@ import { fetchAccessKey } from '@/store/auth/authSlice';
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import { Catalog } from '@/views/Catalog/Catalog';
 import { Goods } from '@/views/Goods/Goods';
-import { Cart } from '@/components/Cart/Cart';
+import { Cart } from '@/views/Cart/Cart';
 import { Card } from '@/components/Card/Card';
 import { PageNotFound } from '@/views/PageNotFound/PageNotFound';
 

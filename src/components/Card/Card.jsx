@@ -8,6 +8,7 @@ import { fetchProduct } from '@/store/product/productSlice';
 
 import { Slider } from '@/components/Slider/Slider';
 import { FavoritesButton } from '@/components/FavoritesButton/FavoritesButton';
+import { AddCardButton } from '@/components/AddCartButton/AddCartButton';
 
 export const Card = () => {
   const { productId } = useParams();
@@ -47,9 +48,7 @@ export const Card = () => {
             </table>
           </div>
           <div className={style.btns}>
-            <button className={style.btn} type="button">
-              В корзину
-            </button>
+            <AddCardButton className={style.btn} id={id} />
             <FavoritesButton className={style.favorites} id={id} />
           </div>
         </div>

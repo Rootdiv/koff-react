@@ -169,7 +169,7 @@ module.exports = {
     ],
     'operator-linebreak': ['error', 'after'],
     'padded-blocks': ['error', 'never'],
-    'quote-props': ['error', 'consistent'],
+    'quote-props': ['error', 'as-needed'],
     quotes: [
       'error',
       'single',
