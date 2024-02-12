@@ -10,6 +10,7 @@ import { Cart } from '@/views/Cart/Cart';
 import { Card } from '@/components/Card/Card';
 import { PageNotFound } from '@/views/PageNotFound/PageNotFound';
 import { Order } from '@/components/Order/Order';
+import { Breadcrumbs } from '@/components/Breadcrumbs/Breadcrumbs';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
         element: (
           <>
             <Catalog />
+            <Breadcrumbs page="Избранное" />
             <Goods />
           </>
         ),
@@ -47,6 +49,7 @@ const router = createBrowserRouter([
         element: (
           <>
             <Catalog />
+            <Breadcrumbs />
             <Goods />
           </>
         ),
@@ -56,6 +59,7 @@ const router = createBrowserRouter([
         element: (
           <>
             <Catalog />
+            <Breadcrumbs page="Поиск" />
             <Goods />
           </>
         ),
@@ -69,6 +73,7 @@ const router = createBrowserRouter([
         element: (
           <>
             <Catalog />
+            <Breadcrumbs />
             <Card />
           </>
         ),
