@@ -1,4 +1,4 @@
-import { addProductToCard, removeProductToCard } from '@/store/cart/cartSlice';
+import { addProductToCard, removeProductFromCard } from '@/store/cart/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 export const AddCardButton = ({ className, id }) => {
@@ -8,7 +8,7 @@ export const AddCardButton = ({ className, id }) => {
 
   const handleClick = () => {
     if (product) {
-      dispatch(removeProductToCard(id));
+      dispatch(removeProductFromCard(id));
     } else {
       dispatch(addProductToCard({ productId: id, quantity: 1 }));
     }

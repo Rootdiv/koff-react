@@ -6,17 +6,18 @@ import { CartForm } from '@/components/CartForm/CartForm';
 import { useSelector } from 'react-redux';
 
 export const Cart = () => {
-  const { goods, loadingFetch } = useSelector(state => state.cart);
+  const { goods, loadingFetch, totalPrice, totalCount, deliveryPrice } = useSelector(state => state.cart);
+
   return (
     <section className={style.cart}>
       <Container className={style.container}>
+        <h2 className={style.title}>Корзина</h2>
         {loadingFetch ? (
           <p>Загрузка...</p>
         ) : goods.length > 0 ? (
           <>
-            <h2 className={style.title}>Корзина</h2>
             <CartGoods goods={goods} />
-            <CartPlace />
+            <CartPlace totalPrice={totalPrice} totalCount={totalCount} deliveryPrice={deliveryPrice} />
             <CartForm />
           </>
         ) : (

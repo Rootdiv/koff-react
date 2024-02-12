@@ -9,6 +9,7 @@ import { Goods } from '@/views/Goods/Goods';
 import { Cart } from '@/views/Cart/Cart';
 import { Card } from '@/components/Card/Card';
 import { PageNotFound } from '@/views/PageNotFound/PageNotFound';
+import { Order } from '@/components/Order/Order';
 
 const router = createBrowserRouter([
   {
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
             <Card />
           </>
         ),
+      },
+      {
+        path: '/order/:orderId',
+        element: <Order />,
       },
       {
         path: '*',

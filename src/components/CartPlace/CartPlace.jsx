@@ -1,14 +1,15 @@
+import { declOfNum } from '@/helpers/declOfNum';
 import style from './CartPlace.module.scss';
 
-export const CartPlace = () => (
+export const CartPlace = ({ totalPrice, totalCount, deliveryPrice }) => (
   <div className={style.place}>
     <h3 className={style.subtitle}>Оформление</h3>
     <div className={style.placeInfo}>
-      <p>2 товара на сумму:</p>
-      <p>268&nbsp;500&nbsp;₽</p>
+      <p>{declOfNum(totalCount, ['товар', 'товара', 'товаров'])} на сумму:</p>
+      <p>{totalPrice.toLocaleString()}&nbsp;&#8381;</p>
     </div>
-    <p className={style.placeDelivery}>Доставка 500 ₽</p>
-    <button type="submit" className={style.placeBtn}>
+    <p className={style.placeDelivery}>Доставка {deliveryPrice}&nbsp;&#8381;</p>
+    <button type="submit" className={style.placeBtn} form="orderForm">
       Оформить заказ
     </button>
   </div>

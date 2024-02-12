@@ -59,7 +59,8 @@ export const Goods = () => {
             {pagination?.totalPages > 1 && <Pagination pagination={pagination} />}
           </>
         ) : (
-          (!list && isFavoritesPage && <p className={style.empty}>Вы ничего не добавили в избранное</p>) || (
+          (!list && isFavoritesPage && <p className={style.empty}>Вы ничего не добавили в избранное</p>) ||
+          (category && <p className={style.empty}>Категория не существует</p>) || (
             <p className={style.empty}>По Вашему запросу ничего не найдено</p>
           )
         )}
