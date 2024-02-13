@@ -7,7 +7,6 @@ export const Breadcrumbs = ({ page }) => {
   const [searchParam] = useSearchParams();
   const category = searchParam.get('category');
   const { data, loading } = useSelector(state => state.product);
-  const productCategory = !(category || page) && data?.category;
 
   return (
     !loading && (
@@ -18,7 +17,7 @@ export const Breadcrumbs = ({ page }) => {
               <Link to="/">Главная</Link>
               <span className={style.separator}>&gt;</span>
             </li>
-            {productCategory && (
+            {data.category && (
               <li className={style.item}>
                 <Link to={`/category?category=${data.category}`}>{data.category}</Link>
                 <span className={style.separator}>&gt;</span>

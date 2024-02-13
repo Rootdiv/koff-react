@@ -38,7 +38,13 @@ export const submitCartForm = createAsyncThunk(
 const formCartSlice = createSlice({
   name: 'fromCart',
   initialState,
-  reducers: {},
+  reducers: {
+    clearFormCart: state => {
+      state.success = false;
+      state.orderId = null;
+      state.error = null;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(submitCartForm.pending, state => {
@@ -60,4 +66,5 @@ const formCartSlice = createSlice({
   },
 });
 
+export const { clearFormCart } = formCartSlice.actions;
 export default formCartSlice.reducer;

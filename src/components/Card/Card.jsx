@@ -4,7 +4,7 @@ import style from './Card.module.scss';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProduct } from '@/store/product/productSlice';
+import { fetchProduct, clearProduct } from '@/store/product/productSlice';
 
 import { Slider } from '@/components/Slider/Slider';
 import { FavoritesButton } from '@/components/FavoritesButton/FavoritesButton';
@@ -21,6 +21,10 @@ export const Card = () => {
 
   useEffect(() => {
     dispatch(fetchProduct(productId));
+
+    return () => {
+      dispatch(clearProduct());
+    };
   }, [dispatch, productId]);
 
   if (loading) return <div>Загрузка...</div>;

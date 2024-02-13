@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchCart } from '@/store/cart/cartSlice';
 import { clearOrder, fetchOrder } from '@/store/order/orderSlice';
+import { clearFormCart } from '@/store/formCart/formCartSlice';
 
 export const Order = () => {
   const { orderId } = useParams();
@@ -31,6 +32,7 @@ export const Order = () => {
 
     return () => {
       dispatch(clearOrder());
+      dispatch(clearFormCart());
     };
   }, [dispatch, orderId]);
 
@@ -55,7 +57,7 @@ export const Order = () => {
             <p className={style.price}>{orderData.totalPrice.toLocaleString()}&nbsp;&#8381;</p>
           </div>
 
-          <p className={style.number}>&numero;{orderData.id}</p>
+          <p className={style.number}>&#8470;{orderData.id}</p>
 
           <div className={style.tableWrapper}>
             <h3 className={style.tableTitle}>Данные доставки</h3>
@@ -73,10 +75,12 @@ export const Order = () => {
                   <td className={style.field}>E-mail</td>
                   <td className={style.value}>{orderData.email}</td>
                 </tr>
-                <tr className={style.row}>
-                  <td className={style.field}>Адрес доставки</td>
-                  <td className={style.value}>{orderData.address}</td>
-                </tr>
+                {orderData.address && (
+                  <tr className={style.row}>
+                    <td className={style.field}>Адрес доставки</td>
+                    <td className={style.value}>{orderData.address}</td>
+                  </tr>
+                )}
                 <tr className={style.row}>
                   <td className={style.field}>Способ оплаты</td>
                   <td className={style.value}>{paymentTypeList[orderData.paymentType]}</td>
