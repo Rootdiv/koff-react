@@ -4,6 +4,7 @@ import { CartGoods } from '@/components/CartGoods/CartGoods';
 import { CartPlace } from '@/components/CartPlace/CartPlace';
 import { CartForm } from '@/components/CartForm/CartForm';
 import { useSelector } from 'react-redux';
+import { GridLoader } from 'react-spinners';
 
 export const Cart = () => {
   const { goods, loadingFetch, totalPrice, totalCount, deliveryPrice } = useSelector(state => state.cart);
@@ -13,7 +14,7 @@ export const Cart = () => {
       <Container className={style.container}>
         <h2 className={style.title}>Корзина</h2>
         {loadingFetch ? (
-          <p>Загрузка...</p>
+          <GridLoader color="#36d7b7" size={80} cssOverride={{ gridColumn: 1 }} />
         ) : goods.length > 0 ? (
           <>
             <CartGoods goods={goods} />

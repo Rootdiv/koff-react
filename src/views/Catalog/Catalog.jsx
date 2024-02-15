@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchCategories } from '@/store/categories/categoriesSlice';
 import { Link, useSearchParams } from 'react-router-dom';
+import { BarLoader } from 'react-spinners';
 import clsx from 'clsx';
 
 export const Catalog = () => {
@@ -16,20 +17,25 @@ export const Catalog = () => {
     dispatch(fetchCategories());
   }, [dispatch]);
 
-  if (loading) return <div>Загрузка...</div>;
-  if (error) return <div>Ошибка: {error}</div>;
-
   return (
     <Container className={style.catalog}>
-      <ul className={style.list}>
-        {data.map((item, i) => (
-          <li className={style.item} key={i}>
-            <Link className={clsx(style.link, category === item && style.linkActive)} to={`/category?category=${item}`}>
-              {item}
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {loading ? (
+        <BarLoader color="#36d7b7" width="50%" height={12} cssOverride={{ borderRadius: '10px', margin: '0 auto' }} />
+      ) : error ? (
+        <div className={style.error}>Ошибка: {error}</div>
+      ) : (
+        <ul className={style.list}>
+          {data.map((item, i) => (
+            <li className={style.item} key={i}>
+              <Link
+                className={clsx(style.link, category === item && style.linkActive)}
+                to={`/category?category=${item}`}>
+                {item}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </Container>
   );
 };

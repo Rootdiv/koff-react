@@ -61,7 +61,7 @@ const formCartSlice = createSlice({
       .addCase(submitCartForm.rejected, (state, action) => {
         state.loading = false;
         state.success = false;
-        state.error = action.message.error;
+        state.error = action.error.message;
       });
   },
 });

@@ -23,7 +23,7 @@ export const fetchOrder = createAsyncThunk('order/fetchOrder', async (orderId, {
 });
 
 const initialState = {
-  orderData: null,
+  orderData: {},
   loading: false,
   error: null,
 };
@@ -33,8 +33,7 @@ const orderSlice = createSlice({
   initialState,
   reducers: {
     clearOrder: state => {
-      state.orderData = null;
-      state.loading = false;
+      state.orderData = {};
       state.error = null;
     },
   },
@@ -46,12 +45,12 @@ const orderSlice = createSlice({
       })
       .addCase(fetchOrder.fulfilled, (state, action) => {
         state.loading = false;
-        state.error = null;
         state.orderData = action.payload;
+        state.error = null;
       })
       .addCase(fetchOrder.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = action.error.message;
       });
   },
 });

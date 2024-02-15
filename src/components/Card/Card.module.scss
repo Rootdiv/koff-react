@@ -101,13 +101,6 @@
   }
 }
 
-.empty {
-  grid-column: 1 / -1;
-  padding-top: 50px;
-  font-size: 16px;
-  text-align: center;
-}
-
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -127,4 +120,15 @@
   padding: 8px 0;
   text-align: right;
   color: #1c1c1c;
+}
+
+.empty {
+  grid-column: 1 / -1;
+  padding-top: 50px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.error {
+  font-size: 16px;
 }

@@ -7,6 +7,7 @@ import { fetchGoods } from '@/store/goods/goodsSlice';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { Pagination } from '@/components/Pagination/Pagination';
 import clsx from 'clsx';
+import { RingLoader } from 'react-spinners';
 
 export const Goods = () => {
   const dispatch = useDispatch();
@@ -38,16 +39,15 @@ export const Goods = () => {
     }
   }, [dispatch, isFavoritesPage, list, page]);
 
-  if (loading) return <div>Загрузка...</div>;
-  if (error) return <div>Ошибка: {data}</div>;
-
   return (
     <section className={style.goods}>
       <Container>
         <h2 className={clsx(style.title, !(list || q) && 'visually-hidden')}>
           {list ? 'Избранное' : q ? 'Результаты поиска:' : 'Список товаров'}
         </h2>
-        {data.length ? (
+        {loading ? (
+          <RingLoader color="#36d7b7" size={250} cssOverride={{ margin: '25px auto' }} />
+        ) : data.length ? (
           <>
             <ul className={style.list}>
               {data.map(item => (
@@ -60,9 +60,9 @@ export const Goods = () => {
           </>
         ) : (
           (!list && isFavoritesPage && <p className={style.empty}>Вы ничего не добавили в избранное</p>) ||
-          (category && <p className={style.empty}>Категория не существует</p>) || (
-            <p className={style.empty}>По Вашему запросу ничего не найдено</p>
-          )
+          (category && <p className={style.empty}>Категория не существует</p>) ||
+          (!error && <p className={style.empty}>По Вашему запросу ничего не найдено</p>) ||
+          (error && <div className={style.error}>Ошибка: {error}</div>)
         )}
       </Container>
     </section>
