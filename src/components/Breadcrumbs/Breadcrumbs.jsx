@@ -6,10 +6,11 @@ import { useSelector } from 'react-redux';
 export const Breadcrumbs = ({ page }) => {
   const [searchParam] = useSearchParams();
   const category = searchParam.get('category');
-  const { data, loading } = useSelector(state => state.product);
+  const { data, loading, error } = useSelector(state => state.product);
 
   return (
-    !loading && (
+    !loading &&
+    !error && (
       <div className={style.breadcrumbs}>
         <Container>
           <ul className={style.list}>

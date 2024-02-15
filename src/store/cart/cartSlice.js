@@ -83,7 +83,6 @@ export const removeProductFromCard = createAsyncThunk(
       const response = await fetch(`${API_URL}/api/cart/products/${id}`, {
         method: 'DELETE',
         headers: {
-          'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
       });

@@ -45,7 +45,7 @@ export const Order = () => {
           {loading ? (
             <div>Загрузка данных...</div>
           ) : !orderData.id && error ? (
-            <div>Заказ не найден. Ошибка: {error}</div>
+            <div>{error}</div>
           ) : (
             <>
               <div className={style.header}>

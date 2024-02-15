@@ -12,13 +12,19 @@ export const fetchOrder = createAsyncThunk('order/fetchOrder', async (orderId, {
       },
     });
 
-    if (!response.ok) {
+    if (!response.ok || response.status === 404) {
+      if (response.status === 404) {
+        return rejectWithValue({
+          status: response.status,
+          error: await response.json(),
+        });
+      }
       throw new Error('Ошибка при получении данных заказа!');
     }
 
     return response.json();
   } catch (error) {
-    return rejectWithValue(error.message);
+    return rejectWithValue({ error: { message: error.message } });
   }
 });
 
@@ -50,7 +56,7 @@ const orderSlice = createSlice({
       })
       .addCase(fetchOrder.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.payload.error.message;
       });
   },
 });
