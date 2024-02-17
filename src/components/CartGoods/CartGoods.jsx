@@ -2,11 +2,18 @@ import { API_URL } from '@/const';
 import style from './CartGoods.module.scss';
 import { useDispatch } from 'react-redux';
 import { removeProductFromCard, updateProductInCard } from '@/store/cart/cartSlice';
+import { useEffect, useState } from 'react';
 
 export const CartGoods = ({ goods }) => {
   const dispatch = useDispatch();
+  const [isChanging, setIsChanging] = useState(false);
+
+  useEffect(() => {
+    setIsChanging(false);
+  }, [goods]);
 
   const decrementButton = (id, quantity) => {
+    setIsChanging(true);
     if (quantity > 1) {
       dispatch(
         updateProductInCard({
@@ -20,6 +27,7 @@ export const CartGoods = ({ goods }) => {
   };
 
   const incrementButton = (id, quantity) => {
+    setIsChanging(true);
     dispatch(
       updateProductInCard({
         productId: id,
@@ -37,11 +45,19 @@ export const CartGoods = ({ goods }) => {
           <p className={style.price}>{price.toLocaleString()}&nbsp;&#8381;</p>
           <p className={style.article}>арт. {article}</p>
           <div className={style.productControl}>
-            <button className={style.productBtn} type="button" onClick={() => decrementButton(id, quantity)}>
+            <button
+              type="button"
+              disabled={isChanging}
+              className={style.productBtn}
+              onClick={() => decrementButton(id, quantity)}>
               -
             </button>
             <p className={style.productCount}>{quantity}</p>
-            <button className={style.productBtn} type="button" onClick={() => incrementButton(id, quantity)}>
+            <button
+              type="button"
+              disabled={isChanging}
+              className={style.productBtn}
+              onClick={() => incrementButton(id, quantity)}>
               +
             </button>
           </div>

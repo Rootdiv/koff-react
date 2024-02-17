@@ -8,7 +8,7 @@ import { fetchProduct, clearProduct } from '@/store/product/productSlice';
 
 import { Slider } from '@/components/Slider/Slider';
 import { FavoritesButton } from '@/components/FavoritesButton/FavoritesButton';
-import { AddCardButton } from '@/components/AddCartButton/AddCartButton';
+import { AddCartButton } from '@/components/AddCartButton/AddCartButton';
 import { RingLoader } from 'react-spinners';
 
 export const Card = () => {
@@ -56,7 +56,7 @@ export const Card = () => {
                 </table>
               </div>
               <div className={style.btns}>
-                <AddCardButton className={style.btn} id={id} />
+                <AddCartButton className={style.btn} id={id} />
                 <FavoritesButton className={style.favorites} id={id} />
               </div>
             </div>
